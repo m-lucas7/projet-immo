@@ -28,11 +28,11 @@ class Appartement
     #[ORM\OneToMany(mappedBy: 'situer', targetEntity: Immeuble::class)]
     private Collection $immeubles;
 
-    #[ORM\ManyToMany(targetEntity: reservation::class, inversedBy: 'appartements')]
+    #[ORM\ManyToMany(targetEntity: Reservation::class, inversedBy: 'appartements')]
     private Collection $reserver;
 
     #[ORM\ManyToOne(inversedBy: 'appartements')]
-    private ?categorie $categorie = null;
+    private ?Categorie $categorie = null;
 
     public function __construct()
     {
