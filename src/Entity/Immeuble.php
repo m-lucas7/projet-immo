@@ -29,6 +29,9 @@ class Immeuble
     #[ORM\Column(length: 255)]
     private ?string $VilleImmeuble = null;
 
+    #[ORM\ManyToOne(inversedBy: 'immeubles')]
+    private ?appartement $situer = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Immeuble
     public function setVilleImmeuble(string $VilleImmeuble): static
     {
         $this->VilleImmeuble = $VilleImmeuble;
+
+        return $this;
+    }
+
+    public function getSituer(): ?appartement
+    {
+        return $this->situer;
+    }
+
+    public function setSituer(?appartement $situer): static
+    {
+        $this->situer = $situer;
 
         return $this;
     }
